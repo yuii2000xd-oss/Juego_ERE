@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magnifica Humanitas – El Desafío del Conocimiento</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <section id="start-screen" class="screen active">
+            <div class="kawaii-avatar-container">
+                <svg viewBox="0 0 100 100" class="kawaii-robot" style="width:110px; height:110px;">
+                    <rect x="25" y="25" width="50" height="40" rx="15" fill="#d6e4ff" stroke="#9bb8ff" stroke-width="2"/>
+                    <circle cx="40" cy="42" r="5" fill="#597ef7"/>
+                    <circle cx="60" cy="42" r="5" fill="#597ef7"/>
+                    <ellipse cx="40" cy="50" rx="4" ry="2" fill="#ffadd2"/>
+                    <ellipse cx="60" cy="50" rx="4" ry="2" fill="#ffadd2"/>
+                    <path d="M 45 52 Q 50 56 55 52" stroke="#597ef7" stroke-width="2" fill="none"/>
+                    <rect x="46" y="15" width="8" height="10" fill="#b7eb8f"/>
+                    <circle cx="50" cy="12" r="4" fill="#ffec3d"/>
+                </svg>
+            </div>
+            <h1>MAGNIFICA HUMANITAS</h1>
+            <h2>EL DESAFÍO DEL CONOCIMIENTO</h2>
+            <p class="subtitle">Pon a prueba tus conocimientos sobre la dignidad humana en la era digital.</p>
+            <div class="description-box" style="background:#f9f9f9; padding:20px; border-radius:16px; margin-bottom:25px; text-align:center;">
+                <p>Adéntrate en las enseñanzas de la encíclica del papa León XIV. Analiza el papel de la Inteligencia Artificial, la ética, la verdad y el destino de nuestra sociedad.</p>
+                <div style="margin-top:10px;">
+                    <span style="background:#e6f7ff; color:#1890ff; padding:5px 10px; border-radius:20px; font-size:0.85rem; margin:5px; display:inline-block;">📋 10 Preguntas</span>
+                    <span style="background:#e6f7ff; color:#1890ff; padding:5px 10px; border-radius:20px; font-size:0.85rem; margin:5px; display:inline-block;">⏱️ 20 Segundos</span>
+                </div>
+            </div>
+            <button id="btn-start" class="btn primary-btn">COMENZAR JUEGO</button>
+        </section>
+
+        <section id="trivia-screen" class="screen">
+            <div class="trivia-header" style="display:flex; justify-content:space-between; margin-bottom:15px; font-weight:bold;">
+                <span id="question-number" style="color:#597ef7;">Pregunta 1 de 10</span>
+                <span id="timer-text" style="color:#eb2f96; background:#fff0f6; padding:2px 10px; border-radius:20px; border:1px solid #ffadd2;">20s</span>
+            </div>
+            <div class="progress-bar-wrapper" style="background:#f0f0f0; height:10px; border-radius:10px; overflow:hidden; margin-bottom:20px;">
+                <div id="progress-bar" class="progress-bar-fill" style="background:#85a5ff; height:100%; width:0%;"></div>
+            </div>
+            <div class="question-card" style="background:#fff; border:2px solid #f0f0f0; padding:20px; border-radius:16px; margin-bottom:20px;">
+                <p id="question-text" style="font-size:1.1rem; font-weight:600;"></p>
+                <p id="multiple-notice" class="multiple-notice hidden" style="color:#fa8c16; font-size:0.85rem; margin-top:5px; font-weight:bold;">⚠️ Selecciona todas las opciones correctas</p>
+            </div>
+            <div id="options-container" class="options-grid" style="display:flex; flex-direction:column; gap:10px; margin-bottom:20px;"></div>
+            <div id="feedback-box" class="feedback-box hidden" style="padding:15px; border-radius:12px; margin-bottom:20px;">
+                <p id="feedback-title" style="font-weight:bold;"></p>
+                <p id="feedback-explanation" style="font-size:0.95rem; margin-top:5px;"></p>
+            </div>
+            <button id="btn-confirm" class="btn primary-btn" disabled>Confirmar Respuesta</button>
+            <button id="btn-next" class="btn secondary-btn hidden">Siguiente Pregunta</button>
+        </section>
+
+        <section id="results-screen" class="screen">
+            <h2 style="text-align:center;">Resultados del Desafío</h2>
+            <div class="score-radial" style="width:120px; height:120px; background:#f9f0ff; border:4px solid #d3adf7; border-radius:50%; display:flex; flex-direction:column; justify-content:center; align-items:center; margin:20px auto; font-weight:bold;">
+                <span id="total-score" style="font-size:2rem; color:#722ed1;">0</span>
+                <small style="font-size:0.75rem; color:#595959;">puntos</small>
+            </div>
+            <h3 id="result-message" style="text-align:center; margin-bottom:20px;"></h3>
+            <div class="stats-summary" style="display:flex; justify-content:center; gap:15px; margin-bottom:25px; text-align:center;">
+                <div style="background:#f6ffed; padding:10px; border-radius:12px; width:90px;"><span id="stat-correct" style="font-weight:bold; display:block;">0</span><small>Correctas</small></div>
+                <div style="background:#fff1f0; padding:10px; border-radius:12px; width:90px;"><span id="stat-incorrect" style="font-weight:bold; display:block;">0</span><small>Incorrectas</small></div>
+                <div style="background:#e6f7ff; padding:10px; border-radius:12px; width:90px;"><span id="stat-percent" style="font-weight:bold; display:block;">0%</span><small>Éxito</small></div>
+            </div>
+            <button id="btn-restart" class="btn primary-btn">VOLVER A JUGAR</button>
+            <button id="btn-review" class="btn secondary-btn" style="margin-top:10px;">REVISAR RESPUESTAS</button>
+        </section>
+
+        <section id="review-screen" class="screen">
+            <h2>Revisión de Respuestas</h2>
+            <div id="review-list" style="max-height:350px; overflow-y:auto; margin:20px 0; padding-right:5px;"></div>
+            <button id="btn-back-to-results" class="btn primary-btn">Volver a Resultados</button>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
